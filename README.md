@@ -9,7 +9,7 @@ interact with your Zuora instance.
 
 You probably want to install this package locally
 
-    npm install zuora
+    npm install zuora-soap
 
 You need to get your config setup like so:
 
