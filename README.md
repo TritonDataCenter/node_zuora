@@ -4,6 +4,10 @@ node_zuora
 Node_zuora is a node.js client library for interacting with the Zuora
 SOAP interface.
 
+#### Disclaimer
+
+This is library is unstable and can be considered an alpha release. Not all methods have been tested, and the client connection will not renew automatically when it expires.
+
 
 ## Installation
 
