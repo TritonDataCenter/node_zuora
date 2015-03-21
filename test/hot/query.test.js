@@ -16,7 +16,7 @@ test.skip('query: with ZOQL syntax error fault', function (t) {
 
 });
 
-test('query: queries for data', function (t) {
+test.skip('query: times out gracefully with adjustable timer', function (t) {
   t.plan(2);
 
   zuora.connect(config, function(err, z) {
@@ -33,6 +33,41 @@ test('query: queries for data', function (t) {
 
 });
 
+test.skip('query: small size request for billRuns', function (t) {
+  t.plan(2);
+
+  zuora.connect(config, function(err, z) {
+    if (err) return t.ifError(err.message);
+    t.ok(z, 'connect() should return a zuora client')
+    var zquery = 'select id from billrun';
+    z.query(zquery, function(err, result) {
+      t.ifError(err);
+      //if (err) return t.ifError(err.message);
+      console.dir(result);
+//      t.equal(result[0].Success, false, 'Success should be false. ID is missing');
+    });
+  });
+
+});
+
+test('query: medium size request for account', function (t) {
+  t.plan(2);
+
+  zuora.connect(config, function(err, z) {
+    if (err) return t.ifError(err.message);
+    t.ok(z, 'connect() should return a zuora client')
+    var zquery = 'select id from account';
+    z.query(zquery, function(err, result) {
+      t.ifError(err);
+      //if (err) return t.ifError(err.message);
+      console.dir(result);
+//      t.equal(result[0].Success, false, 'Success should be false. ID is missing');
+    });
+  });
+
+});
 test.skip('query: uses queryMore to do multiple pages of results');
+test.skip('query: adjust batchsize to 50 using QueryOptions.batchSize header');
+test.skip('query: returns a stream of results')
 test.skip('query: timesout')
 test.skip('query: simple zoql')
