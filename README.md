@@ -23,6 +23,8 @@ You need to get your config setup like so:
 You will need to [download your WSDL][1] file. Visit settings -> Z-Billing settings -> [Download WSDL][1].
 
 Create an API user account. Visit settings -> Admin settings -> [Add single user][2]
+Disable [password expiry][3] for API accounts.
+You may want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies
 
 Save the username and password of the API user with the path to your WSDL:
 
@@ -37,6 +39,7 @@ Save the username and password of the API user with the path to your WSDL:
 
 [1]: https://www.zuora.com/apps/Api.do
 [2]: https://www.zuora.com/apps/UserLogin.do?method=edit&flag=1
+[3]: http://knowledgecenter.zuora.com/kb/How_do_I_prevent_my_API_user_login_from_expiring%3F
 
 ## Usage
 
