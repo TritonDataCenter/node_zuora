@@ -1,15 +1,9 @@
-var test = require('tape');
-var zuora = require('../zuora');
+var test   = require('tape');
+var zuora  = require('../../zuora');
+var config = require('../../etc/config.test.json');
 
 test('create: 1 record', function (t) {
-  t.plan(1);
-
-  var config = {
-    user: 'x',
-    password: 'y',
-    url: '',
-    wsdl: ''
-  };
+  t.plan(4);
 
   var fields = {
     'AccountNumber': '1234',
@@ -17,30 +11,26 @@ test('create: 1 record', function (t) {
     'Batch': 'test_batch',
     'BillCycleDay': 1,
     'Currency': 'USD',
-    'Name': 'John Smith',
+    'Name': 'John "test" Smith',
     'PaymentTerm': 'Due Upon Receipt',
     'SubAccounts__c': '',
     'UUIDLookUp__c': '',
     'Status': 'Draft'
   };
 
-  var x = zuora
-    .connect(config)
-    .then(zuora._xml.create(fields));
+  zuora.connect(config, function(err, z) {
+    t.ifError(err.message);
+    t.ok(z, 'expect valid \'z\' client');
+    if (err) return;
+    z.account.create(fields, function(err, result) {
+      t.ifError(err.message);
+      t.equal(result, 'magic confirmation', 'result should be valid');
+    });
+  });
+});
 
-  t.equal(1, 2);
-
-})
-
-test('create 10 records', function (t) {
+test.skip ('create 10 records', function (t) {
   t.plan(1);
-
-  var config = {
-    user: 'x',
-    password: 'y',
-    url: '',
-    wsdl: ''
-  };
 
   var x = zuora.connect(config);
   t.equal(1, 2);
@@ -51,6 +41,6 @@ test('create 10 records', function (t) {
 })
 
 
-test ('create 200 records in chunks of 50', function (t) {
+test.skip ('create 200 records in chunks of 50', function (t) {
 
 })
