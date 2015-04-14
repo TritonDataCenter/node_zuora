@@ -6,7 +6,7 @@ SOAP interface.
 
 #### Disclaimer
 
-This is library is unstable and can be considered an alpha release. Not all methods have been tested, and the client connection will not renew automatically when it expires.
+This is library is unstable and can be considered an alpha release. Some methods may still be unimplemented.
 
 
 ## Installation
@@ -73,6 +73,6 @@ Check out the source documentation for JSDocs on the API.
 
 MIT.
 
-## Bugs
+## Contributions are welcome
 
 See <https://github.com/joyent/node_zuora/issues>.
