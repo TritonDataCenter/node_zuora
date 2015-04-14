@@ -21,6 +21,8 @@
     "assert-plus": "^0.1.5",
     "bunyan": "^1.3.4",
     "soap": "^0.8.0",
+    "through2": "^0.6.5",
+    "vasync": "^1.6.3",
     "verror": "^1.6.0"
   },
   "devDependencies": {
