@@ -8,9 +8,9 @@
     "type": "git",
     "url": "git@github.com:joyent/node_zuora.git"
   },
-  "main": "lib/index.js",
+  "main": "zuora.js",
   "engines": {
-    "node": ">=0.6"
+    "node": ">=0.8"
   },
   "directories": {
     "bin": "./bin",
