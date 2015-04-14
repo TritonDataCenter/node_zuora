@@ -18,15 +18,16 @@ You probably want to install this package using npm
 
 ## Configuration
 
-You need to get your config setup like so:
+You will need to get your config setup as follows:
 
-You will need to [download your WSDL][1] file. Visit settings -> Z-Billing settings -> [Download WSDL][1].
+1. [Download your WSDL][1] file by visiting Settings -> Z-Billing settings -> [Download WSDL][1].
 
-Create an API user account. Visit settings -> Admin settings -> [Add single user][2]
+2. Create an API user account by visiting settings -> Admin settings -> [Add single user][2]
 Disable [password expiry][3] for API accounts.
-You may want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies
 
-Save the username and password of the API user with the path to your WSDL:
+3. You may also want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies
+
+4. Save the username and password of the API user with the path to your WSDL:
 
 ```json
     {
@@ -67,7 +68,7 @@ Save the username and password of the API user with the path to your WSDL:
 
 [Zuora API documentation](http://knowledgecenter.zuora.com/) for complete information:
 
-Check out the source documentation for JSDocs on the API.
+Check out the source documentation for docs on the API.
 
 ## License
 

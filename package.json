@@ -2,7 +2,7 @@
   "author": "Joyent, Inc. http://www.joyent.com",
   "name": "zuora-soap",
   "description": "Client SDK and CLI for Zuora SOAP API",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "homepage": "http://github.com/joyent/node_zuora",
   "repository": {
