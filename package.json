@@ -3,7 +3,7 @@
   "name": "zuora-soap",
   "description": "Client SDK and CLI for Zuora SOAP API",
   "version": "1.0.1",
-  "private": true,
+  "private": false,
   "homepage": "http://github.com/joyent/node_zuora",
   "repository": {
     "type": "git",
