@@ -1,7 +1,7 @@
 node_zuora
 ==========
 
-Node_zuora is a node.js client library for interacting with the Zuora
+This is a node.js client library for interacting with the Zuora
 SOAP interface.
 
 #### Disclaimer
@@ -20,14 +20,14 @@ You probably want to install this package using npm
 
 You will need to get your config setup as follows:
 
-1. [Download your WSDL][1] file by visiting Settings -> Z-Billing settings -> [Download WSDL][1].
+* [Download your WSDL][1] file by visiting Settings -> Z-Billing settings -> [Download WSDL][1].    
 
-2. Create an API user account by visiting settings -> Admin settings -> [Add single user][2]
+* Create an API user account by visiting settings -> Admin settings -> [Add single user][2]
 Disable [password expiry][3] for API accounts.
 
-3. You may also want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies
+* You may also want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies    
 
-4. Save the username and password of the API user with the path to your WSDL:
+* Save the username and password of the API user with the path to your WSDL:
 
 ```json
     {
