@@ -1,12 +1,11 @@
-node_zuora
-==========
+# [node_zuora](https://github.com/joyent/node_zuora.git)
 
 This is a node.js client library for interacting with the Zuora
 SOAP interface.
 
 #### Disclaimer
 
-This is library is unstable and can be considered an alpha release. Some methods may still be unimplemented.
+This is library is unstable and can be considered an alpha release. Some methods may still be unimplemented and interfaces may change.
 
 
 ## Installation
@@ -20,14 +19,11 @@ You probably want to install this package using npm
 
 You will need to get your config setup as follows:
 
-* [Download your WSDL][1] file by visiting Settings -> Z-Billing settings -> [Download WSDL][1].    
-
-* Create an API user account by visiting settings -> Admin settings -> [Add single user][2]
+- [Download your WSDL][1] file by visiting Settings -> Z-Billing settings -> [Download WSDL][1].    
+- Create an API user account by visiting settings -> Admin settings -> [Add single user][2]
 Disable [password expiry][3] for API accounts.
-
-* You may also want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies    
-
-* Save the username and password of the API user with the path to your WSDL:
+- You may also want to adjust session timeout from the 15 minute default to something longer. Visit Settings -> Administrative Settings -> Security Policies    
+- Save the username and password of the API user with the path to your WSDL:
 
 ```json
     {
