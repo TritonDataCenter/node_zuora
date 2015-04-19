@@ -2,7 +2,7 @@ var test = require('tape');
 var zuora = require(__dirname + '/../../zuora');
 var config = require(__dirname + '/../../etc/config.test.json');
 
-test('query: with ZOQL syntax error fault', function (t) {
+test.skip ('query: with ZOQL syntax error fault', function (t) {
   t.plan(2);
 
   zuora.connect(config, function(err, z) {
@@ -16,7 +16,7 @@ test('query: with ZOQL syntax error fault', function (t) {
 
 });
 
-test('query: times out gracefully with adjustable timer per query', function (t) {
+test.skip ('query: times out gracefully with adjustable timer per query', function (t) {
   t.plan(3);
 
   zuora.connect(config, function(err, z) {
@@ -38,7 +38,7 @@ test('query: times out gracefully with adjustable timer per query', function (t)
 /**
  * Busted. The login() request stops before we start the query() request
  */
-test.skip('query: times out gracefully with adjustable timer using client default', function (t) {
+test.skip ('query: times out gracefully with adjustable timer using client default', function (t) {
   t.plan(3);
 
   var msWait = 5000; // large enough to succeed
@@ -66,7 +66,7 @@ test.skip('query: times out gracefully with adjustable timer using client defaul
 
 });
 
-test.skip('query: small size request for billRuns', function (t) {
+test.skip ('query: small size request for billRuns', function (t) {
   t.plan(2);
 
   zuora.connect(config, function(err, z) {
@@ -83,7 +83,7 @@ test.skip('query: small size request for billRuns', function (t) {
 
 });
 
-test.skip('query: medium size request for account', function (t) {
+test.skip ('query: medium size request for account', function (t) {
   t.plan(2);
 
   zuora.connect(config, function(err, z) {
@@ -114,7 +114,7 @@ test.skip('query: simple zoql')
  *
  * 3. set zuora session timeout back to something huge.
  */
-test.skip('query: survives session timesouts', function(t) {
+test.skip ('query: survives session timesouts', function(t) {
   t.plan(2);
   var q = 0;
   var maxAttempts = 17;
@@ -136,5 +136,49 @@ test.skip('query: survives session timesouts', function(t) {
       });
     }
     doQuery();
+  });
+})
+
+test.skip ('query: can use double-quotes', function(t) {
+  t.plan(3)
+  zuora.connect(config, function(err, z) {
+    if (err) return t.ifError(err.message);
+    t.ok(z, 'connect() should return a zuora client')
+
+    var zquery = 'select accountnumber from account where status = "Active"';
+    z.query(zquery, function(err, result) {
+      log.debug( z.client._client.lastRequest );
+      if (err) return t.ifError(err);
+      t.ok(Array.isArray(result), 'expect valid empty results');
+    });
+  });
+})
+
+test ('query: can use double-quotes with inner apostrophy', function(t) {
+  t.plan(3)
+  zuora.connect(config, function(err, z) {
+    if (err) return t.ifError(err.message);
+    t.ok(z, 'connect() should return a zuora client')
+
+    var zquery = 'select accountnumber from account where name = "bob\'s burgers"';
+    z.query(zquery, function(err, result) {
+      log.debug( z.client._client.lastRequest );
+      if (err) return t.ifError(err);
+      t.ok(Array.isArray(result), 'expect valid empty results');
+    });
+  });
+})
+test ('query: can use single-quotes with inner apostrophy', function(t) {
+  t.plan(3)
+  zuora.connect(config, function(err, z) {
+    if (err) return t.ifError(err.message);
+    t.ok(z, 'connect() should return a zuora client')
+
+    var zquery = "select accountnumber from account where name = 'bob\'s burgers'";
+    z.query(zquery, function(err, result) {
+      log.debug( z.client._client.lastRequest );
+      if (err) return t.ifError(err);
+      t.ok(Array.isArray(result), 'expect valid empty results');
+    });
   });
 })

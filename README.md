@@ -56,6 +56,10 @@ Disable [password expiry][3] for API accounts.
         };
         z.contact.create(contactDetails, function(err, result) {
             if (err) return console.log(err.message);
+            z.query('select accountnumber from account where status = "Active"', function(err, result) {
+                if (err) return console.log(err.message);
+                // inspect result
+            })
         })
     });
 ```
