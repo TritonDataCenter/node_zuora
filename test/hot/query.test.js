@@ -1,6 +1,7 @@
-var test = require('tape');
-var zuora = require(__dirname + '/../../zuora');
+var test   = require('tape');
+var zuora  = require(__dirname + '/../../zuora');
 var config = require(__dirname + '/../../etc/config.test.json');
+var log    = require(__dirname + '/../../lib/logger');
 
 test.skip ('query: with ZOQL syntax error fault', function (t) {
   t.plan(2);
