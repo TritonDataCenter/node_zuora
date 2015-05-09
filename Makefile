@@ -8,6 +8,7 @@
 NODE		:= node
 BUNYAN		:= ./node_modules/.bin/bunyan
 FAUCET		:= ./node_modules/.bin/faucet
+ESLINT		:= ./node_modules/.bin/eslint
 
 #
 # Files
@@ -35,5 +36,7 @@ test: $(FAUCET)
 	$(NODE) test/cold/*.test.js | $(FAUCET)
 	$(NODE) test/hot/*.test.js | $(FAUCET)
 
-
+.PHONY: lint
+lint: $(ESLINT)
+  $(ESLINT) .
 
