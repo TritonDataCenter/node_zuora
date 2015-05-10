@@ -6,6 +6,7 @@
 # Tools
 #
 NODE		:= node
+NPM		:= npm
 BUNYAN		:= ./node_modules/.bin/bunyan
 FAUCET		:= ./node_modules/.bin/faucet
 ESLINT		:= ./node_modules/.bin/eslint
@@ -38,5 +39,5 @@ test: $(FAUCET)
 
 .PHONY: lint
 lint: $(ESLINT)
-  $(ESLINT) .
+	$(ESLINT) .
 
