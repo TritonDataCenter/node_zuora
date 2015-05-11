@@ -26,7 +26,7 @@ test.skip ('query: times out gracefully with adjustable timer per query', functi
     var zquery = 'select id from invoiceitem';
     var msClockStartAt = Date.now();
     var msWait = 200;
-    z.query(zquery, {timeout: msWait}, function(err, result) {
+    z.query(zquery, {requestOptions: {timeout: msWait}}, function(err, result) {
       t.equals(err.message, 'ETIMEDOUT', 'expects ETIMEDOUT error')
       var msClockEndAt = Date.now();
       var duration = msClockEndAt - msClockStartAt;
@@ -140,7 +140,7 @@ test.skip ('query: survives session timesouts', function(t) {
   });
 })
 
-test.skip ('query: can use double-quotes', function(t) {
+test ('query: can use double-quotes', function(t) {
   t.plan(3)
   zuora.connect(config, function(err, z) {
     if (err) return t.ifError(err.message);
