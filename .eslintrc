@@ -10,6 +10,7 @@
     "no-unused-vars": 1,
     "quotes": [1, "single"],
     "no-shadow": 0,
+    "no-multi-spaces": 0,
     "key-spacing": [{"align": "value"}]
   }
 }

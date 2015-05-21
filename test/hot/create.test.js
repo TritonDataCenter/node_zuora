@@ -2,7 +2,7 @@
 var test   = require('tape');
 var zuora  = require('../../zuora');
 var config = require('../../etc/config.test.json');
-var log    = require('../../lib/logger')
+var log    = require('../../lib/logger');
 
 //log.level(log.bunyan.DEBUG);
 
