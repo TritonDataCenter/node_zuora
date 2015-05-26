@@ -11,6 +11,8 @@
     "quotes": [1, "single"],
     "no-shadow": 0,
     "no-multi-spaces": 0,
+    "no-underscore-dangle": 0,
+    "curly": [2, "multi-line"],
     "key-spacing": [{"align": "value"}]
   }
 }
