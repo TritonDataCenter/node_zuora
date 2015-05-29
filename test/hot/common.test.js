@@ -1,15 +1,13 @@
+'use strict';
+
 var test = require('tape');
-var common = require('../lib/common');
+var common = require('../../lib/common');
 
-test('common: error response handler', function (t) {
+test('common: makeError: pass through regular errors', function (t) {
   t.plan(1);
-
-  var x = zuora.connect(config);
   t.equal(1, 2);
+  var error = common.makeError(new Error('Unmodified'));
+  t.ok(error, 'returns an error');
+  t.equal(error.message, 'Unmodified');
+});
 
-  //x.beep(function (err, res) {
-    //t.equal(res, 'boop');
-  //});
-})
-
-test('connect:')

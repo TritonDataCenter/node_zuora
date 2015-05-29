@@ -8,6 +8,7 @@
 NODE		:= node
 NPM		:= npm
 BUNYAN		:= ./node_modules/.bin/bunyan
+TAPE		:= ./node_modules/.bin/tape
 FAUCET		:= ./node_modules/.bin/faucet
 ESLINT		:= ./node_modules/.bin/eslint
 
@@ -34,8 +35,7 @@ deps: | $(REPO_DEPS) $(NPM_EXEC)
 
 .PHONY: test
 test: $(FAUCET)
-	$(NODE) test/cold/*.test.js | $(FAUCET)
-	$(NODE) test/hot/*.test.js | $(FAUCET)
+	$(TAPE) test/*/*.test.js | $(FAUCET)
 
 .PHONY: lint
 lint: $(ESLINT)
