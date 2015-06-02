@@ -1,0 +1,7 @@
+{
+  "user":       "zuora_api@company.com",
+  "password":   "passwords are good",
+  "wsdl":       "./etc/zuora.a.65.0.wsdl",
+  "//endpoint":   "https://services214.zuora.com/apps/services/a/65.0",
+  "verboseLog": false
+}
