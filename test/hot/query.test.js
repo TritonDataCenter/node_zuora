@@ -1,4 +1,5 @@
 'use strict';
+
 var test   = require('tape');
 var zuora  = require('../../zuora');
 var config = require('../../etc/config.test.json');

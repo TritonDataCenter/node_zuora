@@ -1,19 +1,20 @@
+'use strict';
 
-var test   = require('tape');
+var test  = require('tape');
 var zuora  = require('../../zuora');
 var config = require('../../etc/config.test.json');
 var log    = require('../../lib/logger');
 
 //log.level(log.bunyan.DEBUG);
 
-test ('create: previewOptions', function(t) {
+test('create: previewOptions', function(t) {
   t.plan(1);
   // https://knowledgecenter.zuora.com/BC_Developers/SOAP_API/F_SOAP_API_Complex_Types/PreviewOptions
-  t.ok('support previewOptions', 'nope')
+  t.ok('support previewOptions', 'nope');
   // TODO: support other xxxOptions too
-})
+});
 
-test.skip ('create: fail to make 1 account record', function (t) {
+test.skip('create: fail to make 1 account record', function (t) {
   t.plan(8);
 
   var fields = {
@@ -35,9 +36,9 @@ test.skip ('create: fail to make 1 account record', function (t) {
     if (err) return;
     z.account.create(fields, function(err, result) {
       t.ifError(err && err.message || err);
-      log.debug(z.client._client.lastRequest)
-      log.debug(z.client._client.lastResponse)
-      log.debug(result)
+      log.debug(z.client._client.lastRequest);
+      log.debug(z.client._client.lastResponse);
+      log.debug(result);
       t.ok(Array.isArray(result),           'result is an array');
       t.equal(result.length, 1,             'result has an array length of 1');
       t.ok(Array.isArray(result[0].Errors), 'result contains errors array');
@@ -47,7 +48,7 @@ test.skip ('create: fail to make 1 account record', function (t) {
   });
 });
 
-test.skip ('create: fail to make 2 account records', function (t) {
+test.skip('create: fail to make 2 account records', function (t) {
   t.plan(11);
 
   var fields = {
@@ -71,9 +72,9 @@ test.skip ('create: fail to make 2 account records', function (t) {
     if (err) return;
     z.account.create(payload, function(err, result) {
       t.ifError(err && err.message || err);
-      log.debug(z.client._client.lastRequest)
-      log.debug(z.client._client.lastResponse)
-      log.debug(result)
+      log.debug(z.client._client.lastRequest);
+      log.debug(z.client._client.lastResponse);
+      log.debug(result);
       t.ok(Array.isArray(result),           'result is an array');
       t.equal(result.length, 2,             'result has an array length of 1');
       // record 1
@@ -86,12 +87,12 @@ test.skip ('create: fail to make 2 account records', function (t) {
       t.equal(result[1].Errors[0].Code, 'INVALID_VALUE', 'result includes error code');
     });
   });
-})
+});
 
 
-test ('create many records in smaller chunks', function (t) {
-  t.plan(3)
-  var isTest = true;
+test.only('create many records in smaller chunks', function (t) {
+  t.plan(3);
+  var istest = true;
   var numRecords = 120;
 
   var record = {id: 123, name: 'dummy'};
@@ -107,15 +108,15 @@ test ('create many records in smaller chunks', function (t) {
     if (err) return;
     z.account.create(payload, function(err, result) {
       t.ifError(err && err.message || err);
-      log.debug(z.client._client.lastRequest)
-      log.debug(z.client._client.lastResponse)
+      log.debug(z.client._client.lastRequest);
+      log.debug(z.client._client.lastResponse);
     }, {test: true});
   });
-})
+});
 
-test.skip ('create: can submit raw xml', function(t) {
+test.skip('create: can submit raw xml', function(t) {
   t.plan(1);
   var xml = '<zobject></zobject>';
   // xml should be missing the surrounding <create> tags
-  t.fail('not tested yet - might work')
-})
+  t.fail('not tested yet - might work');
+});
