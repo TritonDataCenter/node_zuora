@@ -90,12 +90,9 @@ test.skip('create: fail to make 2 account records', function (t) {
 });
 
 
-test.only('create: many records in smaller chunks (fails)', function (t) {
-  t.plan(3);
-  var istest = true;
+test('create: many records in smaller chunks (fails)', function (t) {
+  t.plan(8);
   var numRecords = 120;
-
-  var record = {id: 0, name: 'dummy'};
 
   var payload = [];
   for (var i = 0; i < numRecords; i++) {
@@ -112,15 +109,18 @@ test.only('create: many records in smaller chunks (fails)', function (t) {
       t.ifError(err && err.message || err);
       log.debug(z.client._client.lastRequest);
       log.debug(z.client._client.lastResponse);
-      t.equal(result.length, numRecords);
-      t.equal(result[0].status, true)
+      t.equal(result.length, numRecords, 'Number of inputs must match number of outputs');
+      t.equal(result[0].Success, false, 'Creates should fail');
+      t.equal(result[0].Errors[0].Code, 'MISSING_REQUIRED_VALUE', 'Error object has code');
+      t.ok(result[0].Errors[0].Message, 'Error object has message');
+      t.end();
     }, {test: true});
   });
 });
 
 test.skip('create: can submit raw xml', function(t) {
   t.plan(1);
-  var xml = '<zobject></zobject>';
+  // var xml = '<zobject></zobject>';
   // xml should be missing the surrounding <create> tags
   t.fail('not tested yet - might work');
 });
