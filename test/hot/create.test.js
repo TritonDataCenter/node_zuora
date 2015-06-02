@@ -90,17 +90,19 @@ test.skip('create: fail to make 2 account records', function (t) {
 });
 
 
-test.only('create many records in smaller chunks', function (t) {
+test.only('create: many records in smaller chunks (fails)', function (t) {
   t.plan(3);
   var istest = true;
   var numRecords = 120;
 
-  var record = {id: 123, name: 'dummy'};
+  var record = {id: 0, name: 'dummy'};
 
   var payload = [];
   for (var i = 0; i < numRecords; i++) {
-    payload.push(record);
+    //payload.push(record);
+    payload.push({id: i, name: 'dummy'});
   }
+  t.equal(payload.length, numRecords);
 
   zuora.connect(config, function(err, z) {
     t.ifError(err && err.message || err);
@@ -110,6 +112,8 @@ test.only('create many records in smaller chunks', function (t) {
       t.ifError(err && err.message || err);
       log.debug(z.client._client.lastRequest);
       log.debug(z.client._client.lastResponse);
+      t.equal(result.length, numRecords);
+      t.equal(result[0].status, true)
     }, {test: true});
   });
 });
