@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  */
 
@@ -6,7 +8,7 @@ var test = require('tape');
 test('soapHeaders: can adjust existing login header', function (t) {
   t.plan(8);
 
-  var soapHeaders = undefined;
+  var soapHeaders;
 
   function addSoapHeader (xmlHeader) {
     if (!soapHeaders) {
@@ -17,15 +19,15 @@ test('soapHeaders: can adjust existing login header', function (t) {
 
   var client = {
     addSoapHeader: addSoapHeader
-  }
+  };
 
   function getSoapHeaders () {
     return soapHeaders;
   }
 
-  function clearSoapHeaders () {
-    SoapHeaders = null;
-  }
+  //function clearSoapHeaders () {
+  //  soapHeaders = null;
+  //}
 
   /**
    * Keep the first header up to date with a valid
@@ -40,13 +42,13 @@ test('soapHeaders: can adjust existing login header', function (t) {
       headers[0] = headers[headers.length - 1];
       headers.length = headers.length - 1;
     } else {
-      client.addSoapHeader(session)
+      client.addSoapHeader(session);
     }
   }
 
   var magicXML = '<XML>magic</XML>';
   var newXML   = '<XML>new</XML>';
-  setSessionHeader(magicXML)
+  setSessionHeader(magicXML);
 
   // updating 1 header
   t.equal(soapHeaders.length, 1);
@@ -56,9 +58,9 @@ test('soapHeaders: can adjust existing login header', function (t) {
   t.equal(soapHeaders.length, 1);
 
   // updating when 2 headers
-  addSoapHeader('extraHeader')
+  addSoapHeader('extraHeader');
   t.equal(soapHeaders.length, 2);
-  setSessionHeader(magicXML)
+  setSessionHeader(magicXML);
   t.equal(soapHeaders.length, 2);
   t.equal(soapHeaders[0], magicXML);
   t.equal(soapHeaders[1], 'extraHeader');
