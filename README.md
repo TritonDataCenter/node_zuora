@@ -3,10 +3,6 @@
 This is a node.js client library for interacting with the Zuora
 SOAP interface.
 
-#### Disclaimer
-
-This is library is unstable and can be considered an alpha release. Some methods may still be unimplemented and interfaces may change.
-
 
 ## Installation
 
@@ -69,6 +65,16 @@ Disable [password expiry][3] for API accounts.
 [Zuora API documentation](http://knowledgecenter.zuora.com/) for complete information:
 
 Check out the source documentation for docs on the API.
+
+## Alternatives
+
+If this isn't your cup of tea when it comes to soap, then perhaps [@Sparkida's][4] [Nuora][1], [Nuora-MVC][2] or @DeadAlready's [Zuora][4] with Rest may fit your tastes.
+
+[1]: https://github.com/node-zuora/nuora
+[2]: https://github.com/node-zuora/nuora-mvc
+[3]: https://www.npmjs.com/package/zuora
+[4]: https://github.com/sparkida
+
 
 ## License
 
