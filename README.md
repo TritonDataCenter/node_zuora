@@ -68,7 +68,7 @@ Check out the source documentation for docs on the API.
 
 ## Alternatives
 
-If this isn't your cup of tea when it comes to soap, then perhaps [@Sparkida's][4] [Nuora][1], [Nuora-MVC][2] or @DeadAlready's [Zuora][4] with Rest may fit your tastes.
+If this isn't your cup of tea when it comes to soap, then perhaps [@Sparkida's][4] [Nuora][1], [Nuora-MVC][2] or @DeadAlready's [Zuora][3] with Rest may fit your tastes.
 
 [1]: https://github.com/node-zuora/nuora
 [2]: https://github.com/node-zuora/nuora-mvc
