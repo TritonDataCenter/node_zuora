@@ -13,6 +13,6 @@
     "no-multi-spaces": 0,
     "no-underscore-dangle": 0,
     "curly": [2, "multi-line"],
-    "key-spacing": [{"align": "value"}]
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "align": "value"}],
   }
 }
