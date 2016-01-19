@@ -68,12 +68,12 @@ Check out the source documentation for docs on the API.
 
 ## Alternatives
 
-If this isn't your cup of tea when it comes to soap, then perhaps [@Sparkida's][4] [Nuora][1], [Nuora-MVC][2] or @DeadAlready's [Zuora][3] with Rest may fit your tastes.
+If this isn't your cup of tea when it comes to soap, then perhaps [@Sparkida's][14] [Nuora][11], [Nuora-MVC][12] or @DeadAlready's [Zuora][13] with Rest may fit your tastes.
 
-[1]: https://github.com/node-zuora/nuora
-[2]: https://github.com/node-zuora/nuora-mvc
-[3]: https://www.npmjs.com/package/zuora
-[4]: https://github.com/sparkida
+[11]: https://github.com/node-zuora/nuora
+[12]: https://github.com/node-zuora/nuora-mvc
+[13]: https://www.npmjs.com/package/zuora
+[14]: https://github.com/sparkida
 
 
 ## License
