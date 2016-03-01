@@ -5,8 +5,6 @@ var zuora  = require('../../zuora');
 var config = require('../../etc/config.test.json');
 var log    = require('../../lib/logger');
 
-log.level(log.bunyan.DEBUG);
-
 test.skip('subscribe: fail to create 1 account record', function (t) {
   t.plan(9);
 
@@ -35,9 +33,9 @@ test.skip('subscribe: fail to create 1 account record', function (t) {
       log.debug(z.client._client.lastResponse);
       log.debug(result);
       t.ok(Array.isArray(result),           'result is an array');
-      t.equal(result.length, 1,             'result has an array length of 2');
+      t.equal(result.length, 1,             'result has an array length of 1');
       t.ok(Array.isArray(result[0].Errors), 'result contains errors array');
-      t.equal(result[0].Errors.length, 2,   'has only 1 result[].Errors[] record');
+      t.equal(result[0].Errors.length, 2,   'has only 2 result[].Errors[] record');
       t.equal(result[0].Errors[0].Code, 'MISSING_REQUIRED_VALUE', 'result includes error code');
       t.equal(result[0].Errors[1].Code, 'MISSING_REQUIRED_VALUE', 'result includes error code');
     });
@@ -51,10 +49,10 @@ test('subscribe: create multiple entries with invalid values for subscription', 
   var payload = [];
   for (var i = 0; i < numRecords; i++) {
     payload.push({
-        Account: {
-            AccountNumber: i,
-            AutoPay: false,
-            Batch: 'this is gonnay fail',
+        'Account': {
+            'AccountNumber': i,
+            'AutoPay': false,
+            'Batch': 'this is gonna fail',
             'BillCycleDay': 1,
             'Currency': 'USD',
             'Name': 'John "test" Smith ' + i,
@@ -63,29 +61,19 @@ test('subscribe: create multiple entries with invalid values for subscription', 
             'UUIDLookUp__c': '',
             'Status': 'Draft'
         },
-        BillToContact: {
-            Address1: 'My Street',
-            City: 'My City',
-            Country: 'France',
-            FirstName: 'John',
-            LastName: 'Smith',
-            PostalCode: '35467',
-            WorkEmail: 'johnSmith@test.com'
+        'BillToContact': {
+            'FirstName': 'John',
+            'LastName': 'Smith'
         },
-        SubscriptionData: {
-            Subscription: {
-                AutoRenew: true,
-                InitialTerm: 12,
-                InitialTermPeriodType: 'Month',
-                Name: 'SubName'+i,
-                RenewalTerm: 12,
-                RenewalTermPeriodType: 'Month',
-                Status: 'Draft',
-                TermType: 'TERMED'
+        'SubscriptionData': {
+            'Subscription': {
+                'Name': 'SubName'+i,
+                'Status': 'Draft',
+                'TermType': 'EVERGREEN'
             },
-            RatePlanData: [{
-                RatePlan: {
-                    ProductRatePlanId: '0123456789' + i
+            'RatePlanData': [{
+                'RatePlan': {
+                    'ProductRatePlanId': '0123456789' + i
                 }
             }]
         }
